@@ -1,0 +1,64 @@
+
+// Calculadora Basica
+
+SubProceso CalculadoraBasica //bloque encargaddo de realizar las operaciones basicas
+    Definir opcion Como Entero
+    Definir n1, n2, resultado Como Real//solo dos variables que se usaran para las operaciones y una para el resultado
+	
+    Mientras opcion <> 5 Hacer
+        Escribir ""
+        Escribir "===== CALCULADORA BASICA ====="
+        Escribir "1) Sumar ( + )"
+        Escribir "2) Restar ( - )"
+        Escribir "3) Multiplicar ( * )"
+        Escribir "4) Dividir ( / )"
+        Escribir "5) Volver al menu principal"
+        Escribir "Seleccione una opcion (1-5): "
+        Leer opcion
+		
+        Segun opcion Hacer
+            1:
+                Escribir "Ingrese el primer n�mero: "
+                Leer n1
+                Escribir "Ingrese el segundo n�mero: "
+                Leer n2
+                resultado <- n1 + n2
+                Escribir "Resultado: ", resultado
+            2:
+                Escribir "Ingrese el primer n�mero: "
+                Leer n1
+                Escribir "Ingrese el segundo n�mero: "
+                Leer n2
+                resultado <- n1 - n2
+                Escribir "Resultado: ", resultado
+            3:
+                Escribir "Ingrese el primer numero: "
+                Leer n1
+                Escribir "Ingrese el segundo numero: "
+                Leer n2
+                resultado <- n1 * n2
+                Escribir "Resultado: ", resultado
+            4:
+                Escribir "Ingrese el primer numero (dividendo): "
+                Leer n1
+                Escribir "Ingrese el segundo numero (divisor): "
+                Leer n2
+                Si n2 = 0 Entonces//seccion encargada de evitar que el usuario divida entre cero
+                    Escribir "ERROR: Division por cero no permitida."
+                Sino
+                    resultado <- n1 / n2
+                    Escribir "Resultado: ", resultado
+                FinSi
+            5:
+                Escribir "Volviendo al menu principal..."
+            De Otro Modo:
+                Escribir "Opcion invalida. Ingrese un numero entre 1 y 5."
+        FinSegun
+		
+        Si opcion <> 5 Entonces
+            Escribir ""
+            Escribir "Presione ENTER para continuar..."
+            Esperar Tecla
+        FinSi
+    FinMientras
+FinSubProceso
