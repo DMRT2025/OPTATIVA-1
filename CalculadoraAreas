@@ -1,0 +1,82 @@
+SubProceso CalculadoraAreas
+    Definir opcion Como Entero
+    Definir radio, diametro, area, lado, base, altura, baseM, baseMe Como Real
+    Definir tipo Como Cadena//variables independientes para cada figura
+    Definir pii Como Real
+    pii <- 3.141592
+	
+    Repetir
+        Limpiar Pantalla//muestra el menu de figuras disponibles
+        Escribir "=== CALCULADORA DE �REAS ==="
+        Escribir "1) Circulo"
+        Escribir "2) Cuadrado"
+        Escribir "3) Triangulo"
+        Escribir "4) Trapecio"
+        Escribir "0) Volver al menu principal"
+        Escribir ""
+        Escribir "Selecciona una opcion: "
+        Leer opcion
+		
+        Segun opcion Hacer
+            1:
+                Escribir "Circulo seleccionado."
+                Escribir "Vas a introducir Radio (R) o Diametro (D)? "//valida si se quiere usar el radio o el diametro
+                Leer tipo
+                Si tipo = "R" O tipo = "r" Entonces//validar si se introduce el valor en mayusculas o minusculas
+                    Escribir "Introduce el radio: "
+                    Leer radio
+                    diametro <- radio * 2
+                    area <- pii * radio * radio
+                    Escribir "Radio: ", radio
+                    Escribir "Dametro: ", diametro
+                    Escribir "Area: ", area
+                Sino
+                    Si tipo = "D" O tipo = "d" Entonces//validar si se introduce el valor en mayuscula o minuscula
+                        Escribir "Introduce el diametro: "
+                        Leer diametro
+                        radio <- diametro / 2
+                        area <- pii * radio * radio
+                        Escribir "Diametro: ", diametro
+                        Escribir "Radio: ", radio
+                        Escribir "Area: ", area
+                    Sino
+                        Escribir "Opcion invalida. Use R o D."//regresa si se ingreso un dato erroneo
+                    FinSi
+                FinSi
+            2:
+                Escribir "Cuadrado seleccionado."
+                Escribir "Introduce el lado: "
+                Leer lado
+                area <- lado * lado
+                Escribir "area: ", area
+            3:
+                Escribir "Triangulo seleccionado."
+                Escribir "Introduce la base: "
+                Leer base
+                Escribir "Introduce la altura: "
+                Leer altura
+                area <- (base * altura) / 2
+                Escribir "Area: ", area
+            4:
+                Escribir "Trapecio seleccionado."
+                Escribir "Introduce la base mayor: "
+                Leer baseM
+                Escribir "Introduce la base menor: "
+                Leer baseMe
+                Escribir "Introduce la altura: "
+                Leer altura
+                area <- ((baseM + baseMe) / 2) * altura
+                Escribir "Area: ", area
+            0:
+                Escribir "Volviendo al menu principal..."
+            De Otro Modo:
+                Escribir "Opcion no valida."
+        FinSegun
+		
+        Si opcion <> 0 Entonces
+            Escribir ""
+            Escribir "Presiona ENTER para continuar..."
+            Esperar Tecla
+        FinSi
+    Hasta Que opcion = 0
+FinSubProceso
