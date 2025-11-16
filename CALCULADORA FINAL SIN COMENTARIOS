@@ -1,0 +1,324 @@
+Algoritmo calculadora_avanzada
+	
+	Definir opcionPrincipal Como Entero 
+	opcionPrincipal <- 0
+	
+	Mientras opcionPrincipal <> 5 Hacer 
+		Limpiar Pantalla
+		Escribir "      MENUPRINCIPAL "
+		Escribir "1) Calculadora Bsica (+ - * /)"
+		Escribir "2) Calculadora de reas Geomtricas"
+		Escribir "3) Estadstica Bsica (Media, Mediana, Moda)"
+		Escribir "4) Sucesion de Fibonacci"
+		Escribir "5) Salir"
+		Escribir "=================================="
+		Escribir "Seleccione una opcin (1-5): "
+		Leer opcionPrincipal 
+		
+			1:
+				CalculadoraBasica()
+			2:
+				CalculadoraAreas()
+			3:
+				EstadisticaBasica()
+			4:
+				Fibonacci()
+			5:
+				Escribir "Gracias por usar la aplicacin! Hasta luego!"
+			De Otro Modo:
+				Escribir "ERROR: Opcin invlida. Intente de nuevo."
+				Esperar Tecla
+		FinSegun
+	FinMientras
+	
+FinAlgoritmo
+
+
+SubProceso CalculadoraBasica 
+	Definir opcion Como Entero
+	Definir n1, n2, resultado Como Real
+	
+	opcion <- 0
+	Mientras opcion <> 5 Hacer
+		Limpiar Pantalla
+		Escribir "===== CALCULADORA BSICA ====="
+		Escribir "1) Sumar ( + )"
+		Escribir "2) Restar ( - )"
+		Escribir "3) Multiplicar ( * )"
+		Escribir "4) Dividir ( / )"
+		Escribir "5) Volver al men principal"
+		Escribir "Seleccione una opcin (1-5): "
+		Leer opcion
+		
+		Si opcion >= 1 Y opcion <= 4 Entonces
+			Escribir "Ingrese el primer nmero: "
+			Leer n1
+			Escribir "Ingrese el segundo nmero: "
+			Leer n2
+		FinSi
+		
+		Segun opcion Hacer
+			1:
+				resultado <- n1 + n2
+				Escribir "Resultado de la Suma: ", resultado
+			2:
+				resultado <- n1 - n2
+				Escribir "Resultado de la Resta: ", resultado
+			3:
+				resultado <- n1 * n2
+				Escribir "Resultado de la Multiplicacin: ", resultado
+			4:
+				Si n2 = 0 Entonces // Validacin crucial: evitar divisin por cero
+					Escribir "ERROR: Divisin por cero no permitida."
+				Sino
+					resultado <- n1 / n2
+					Escribir "Resultado de la Divisin: ", resultado
+				FinSi
+			5:
+				Escribir "Volviendo al men principal..."
+			De Otro Modo:
+				Escribir "ERROR: Opcin invlida. Ingrese un nmero entre 1 y 5."
+		FinSegun
+		
+		Si opcion <> 5 Entonces
+			Escribir ""
+			Escribir "Presione ENTER para continuar..."
+			Esperar Tecla
+		FinSi
+	FinMientras
+FinSubProceso
+
+
+SubProceso CalculadoraAreas
+	Definir opcion Como Entero
+	Definir radio, diametro, area, lado, base, altura, baseM, baseMe Como Real
+	Definir tipo Como Cadena
+	Definir pii Como Real
+	pii <- 3.141592
+	opcion <- -1
+	
+	Repetir
+		Limpiar Pantalla
+		Escribir "=== CALCULADORA DE REAS Y PARMETROS ==="
+		Escribir "1) Crculo (Area, Radio, Dimetro)"
+		Escribir "2) Cuadrado (Area)"
+		Escribir "3) Tringulo (Area)"
+		Escribir "4) Trapecio (Area)"
+		Escribir "0) Volver al men principal"
+		Escribir ""
+		Escribir "Selecciona una opcin: "
+		Leer opcion
+		
+		Si opcion >= 1 Y opcion <= 4 Entonces
+
+		FinSi
+		
+		Segun opcion Hacer
+			1: // Crculo
+				Escribir "Crculo seleccionado."
+				Escribir "Vas a introducir Radio (R) o Dimetro (D)? "
+				Leer tipo
+				
+				Si tipo = "R" O tipo = "r" Entonces
+					Escribir "Introduce el radio: "
+					Leer radio
+					diametro <- radio * 2
+					area <- pii * radio ^ 2 
+					Escribir "Radio: ", radio
+					Escribir "Dimetro: ", diametro
+					Escribir "rea: ", area
+				Sino
+					Si tipo = "D" O tipo = "d" Entonces
+						Escribir "Introduce el dimetro: "
+						Leer diametro
+						radio <- diametro / 2
+						area <- pii * radio ^ 2
+						Escribir "Dimetro: ", diametro
+						Escribir "Radio: ", radio
+						Escribir "rea: ", area
+					Sino
+						Escribir "ERROR: Opcin invlida. Use R o D."
+					FinSi
+				FinSi
+			2: //Cuadrado
+				Escribir "Cuadrado seleccionado."
+				Escribir "Introduce la longitud del lado: "
+				Leer lado
+				area <- lado * lado
+				Escribir "rea: ", area
+			3: // Tringulo
+				Escribir "Tringulo seleccionado."
+				Escribir "Introduce la base: "
+				Leer base
+				Escribir "Introduce la altura: "
+				Leer altura
+				area <- (base * altura) / 2
+				Escribir "rea: ", area
+			4: // Trapecio
+				Escribir "Trapecio seleccionado."
+				Escribir "Introduce la base mayor (B): "
+				Leer baseM
+				Escribir "Introduce la base menor (b): "
+				Leer baseMe
+				Escribir "Introduce la altura (h): "
+				Leer altura
+				area <- ((baseM + baseMe) / 2) * altura
+				Escribir "rea: ", area
+			0:
+				Escribir "Volviendo al men principal..."
+			De Otro Modo:
+				Escribir "ERROR: Opcin no vlida."
+		FinSegun
+		
+		Si opcion <> 0 Entonces
+			Escribir "-------------------------------------------"
+			Escribir "Presiona ENTER para continuar..."
+			Esperar Tecla
+		FinSi
+	Hasta Que opcion = 0
+FinSubProceso
+
+
+SubProceso EstadisticaBasica
+	Definir n, i, j Como Entero
+	Definir numeros Como Real
+	Definir suma, media, mediana, moda Como Real
+	Definir aux, maxFrecuencia, frecuencia, modaValor Como Real
+	
+	
+	Repetir
+		Escribir "Cuntos nmeros deseas ingresar? "
+		Leer n
+		Si n <= 0 Entonces
+			Escribir "ERROR: Debe ingresar una cantidad vlida (mayor a 0)."
+			Esperar Tecla
+		FinSi
+	Hasta Que n > 0
+	
+	Dimension numeros[n]
+	
+	Para i <- 1 Hasta n Hacer
+		Escribir "Ingresa el nmero ", i, ": "
+		Leer numeros[i]
+	FinPara
+	
+	suma <- 0
+	Para i <- 1 Hasta n Hacer
+		suma <- suma + numeros[i]
+	FinPara
+	media <- suma / n
+	
+	Para i <- 1 Hasta n-1 Hacer
+		Para j <- i+1 Hasta n Hacer
+			Si numeros[j] < numeros[i] Entonces
+				aux <- numeros[i]
+				numeros[i] <- numeros[j]
+				numeros[j] <- aux
+			FinSi
+		FinPara
+	FinPara
+	
+	// 3. Clculo de la Mediana
+	Si n % 2 = 0 Entonces // Si es par, promedio de los dos centrales
+		mediana <- (numeros[n/2] + numeros[n/2 + 1]) / 2
+	Sino // Si es impar, el valor central
+		mediana <- numeros[(n+1)/2]
+	FinSi
+	
+	
+	maxFrecuencia <- 0
+	modaValor <- 0 
+	
+	Para i <- 1 Hasta n Hacer
+		frecuencia <- 0
+		Para j <- 1 Hasta n Hacer
+			Si numeros[i] = numeros[j] Entonces
+				frecuencia <- frecuencia + 1
+			FinSi
+		FinPara
+		
+		
+		Si frecuencia > maxFrecuencia Entonces
+			maxFrecuencia <- frecuencia
+			modaValor <- numeros[i]
+		FinSi
+	FinPara
+	
+	
+	Si maxFrecuencia > 1 Entonces
+		moda <- modaValor
+	Sino
+		Escribir "Nota: No se encontr moda (todos los elementos son nicos)."
+		moda <- 0 
+	
+	
+	Escribir ""
+	Escribir "=== RESULTADOS ESTADSTICOS ==="
+	Escribir "Media (Promedio): ", media
+	Escribir "Mediana: ", mediana
+	
+	Si maxFrecuencia > 1 Entonces
+		Escribir "Moda: ", moda
+	FinSi
+	Escribir ""
+	Escribir "Presione ENTER para volver..."
+	Esperar Tecla
+FinSubProceso
+
+
+SubProceso Fibonacci
+	Definir inicio, n, contador Como Entero
+	Definir a, b, c Como Entero 
+	
+	// Validacin
+	Repetir
+		Escribir "Ingresa el nmero inicial (debe ser >= 0): "
+		Leer inicio
+		Si inicio < 0 Entonces
+			Escribir "ERROR: El nmero inicial debe ser no negativo."
+			Esperar Tecla
+		FinSi
+	Hasta Que inicio >= 0
+	
+	// Validacin
+	Repetir
+		Escribir "Cuntos trminos de Fibonacci deseas generar? "
+		Leer n
+		Si n <= 0 Entonces
+			Escribir "ERROR: Debe generar al menos un trmino."
+			Esperar Tecla
+		FinSi
+	Hasta Que n > 0
+	
+	a <- 0
+	b <- 1
+	
+	Mientras a < inicio Hacer
+		c <- a + b
+		a <- b
+		b <- c
+		
+		Si a > 1000000 Entonces
+			Escribir "ADVERTENCIA: Nmero inicial demasiado alto para un clculo prctico. Abortando bsqueda."
+			a <- 0 
+			Romper
+		FinSi
+	FinMientras
+	
+	Escribir "=== SUCESIN DE FIBONACCI (", n, " TRMINOS a partir de ", inicio, ") ==="
+	
+	
+	contador <- 0
+	
+	Mientras contador < n Hacer 
+		Escribir a
+		c <- a + b 
+		a <- b 
+		b <- c 
+		contador <- contador + 1
+	FinMientras
+	
+	Escribir ""
+	Escribir "Presione ENTER para volver..."
+	Esperar Tecla
+FinSubProceso
