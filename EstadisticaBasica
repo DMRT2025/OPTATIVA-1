@@ -1,0 +1,68 @@
+SubProceso EstadisticaBasica
+    Definir n, i, j Como Entero
+    Definir numeros Como Real
+    Definir suma, media, mediana, moda Como Real
+    Definir aux, maxFrecuencia, frecuencia Como Entero
+	
+    Escribir "Cuantos numeros deseas ingresar? "//solicita cuantos numeros quiere el usuario
+    Leer n
+	
+    Si n <= 0 Entonces
+        Escribir "Error: Debe ingresar al menos un numero."//revisa si el numero es menor a zero
+        Esperar Tecla
+        
+    FinSi
+	
+    Dimension numeros[n]
+	
+    Para i <- 1 Hasta n Hacer
+        Escribir "Ingresa el numero ", i, ": "
+        Leer numeros[i]
+    FinPara
+	
+    suma <- 0
+    Para i <- 1 Hasta n Hacer//calcula el promedio
+        suma <- suma + numeros[i]
+    FinPara
+    media <- suma / n
+	
+    Para i <- 1 Hasta n-1 Hacer//ordena los numeros para calcular la mediana
+        Para j <- i+1 Hasta n Hacer
+            Si numeros[j] < numeros[i] Entonces
+                aux <- numeros[i]
+                numeros[i] <- numeros[j]
+                numeros[j] <- aux
+            FinSi
+        FinPara
+    FinPara
+	
+    Si n % 2 = 0 Entonces
+        mediana <- (numeros[n/2] + numeros[n/2 + 1]) / 2
+    Sino
+        mediana <- numeros[(n+1)/2]
+    FinSi
+	
+    maxFrecuencia <- 0
+    moda <- numeros[1]
+    Para i <- 1 Hasta n Hacer//calcular la moda
+        frecuencia <- 0
+        Para j <- 1 Hasta n Hacer
+            Si numeros[i] = numeros[j] Entonces
+                frecuencia <- frecuencia + 1
+            FinSi
+        FinPara
+        Si frecuencia > maxFrecuencia Entonces
+            maxFrecuencia <- frecuencia
+            moda <- numeros[i]
+        FinSi
+    FinPara
+	
+    Escribir ""//esta parte muestra los resultados
+    Escribir "=== RESULTADOS ESTADISTICOS ==="
+    Escribir "Media: ", media
+    Escribir "Mediana: ", mediana
+    Escribir "Moda: ", moda
+    Escribir ""
+    Escribir "Presione ENTER para volver..."
+    Esperar Tecla
+FinSubProceso
