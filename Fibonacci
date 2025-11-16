@@ -1,0 +1,44 @@
+SubProceso Fibonacci
+    Definir inicio, n, contador Como Entero
+    Definir a, b, c Como Entero
+	
+    Escribir "Ingresa el numero inicial (debe ser >= 0): "
+    Leer inicio
+    Si inicio < 0 Entonces//revisa si el numero negativo 
+        Escribir "Error: El numero inicial debe ser no negativo."
+        Esperar Tecla
+        
+    FinSi
+	
+    Escribir "Cuantos terminos deseas generar? "//guarda la cantidad de numeros que se quieren
+    Leer n
+    Si n <= 0 Entonces// revisa si el numero no es negativo
+        Escribir "Error: Debe generar al menos un termino."
+        Esperar Tecla
+        
+    FinSi
+	
+    a <- 0
+    b <- 1
+	
+    Mientras a < inicio Hacer
+        c <- a + b
+        a <- b
+        b <- c
+    FinMientras
+	
+    contador <- 0
+    Escribir ""
+    Escribir "=== SUCESION DE FIBONACCI ==="
+    Mientras contador < n Hacer//genera y muestra todos los datos
+        Escribir a
+        c <- a + b
+        a <- b
+        b <- c
+        contador <- contador + 1
+    FinMientras
+	
+    Escribir ""
+    Escribir "Presione ENTER para volver..."//este se encarga de regresarnos al menu
+    Esperar Tecla
+FinSubProceso
