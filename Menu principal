@@ -1,0 +1,35 @@
+Algoritmo calculadora_avanzada
+//cada parte 
+	Definir opcionPrincipal Como Entero //aqui se almacena la opcion que se utilizara en el menu
+	opcionPrincipal<-0
+		
+		Mientras opcionPrincipal <> 5 Hacer //cliclo que hace que el codigo se repita cuantas veces quiera el usuario
+			Limpiar Pantalla
+			Escribir "       MENU PRINCIPAL"
+			Escribir "1) Calculadora Basica (+ - * /)"
+			Escribir "2) Calculadora de areas"
+			Escribir "3) Estadistica Basica"
+			Escribir "4) Secuencia de Fibonacci"
+			Escribir "5) Salir"
+			Escribir "Seleccione una opcion (1-5): "
+			Leer opcionPrincipal//se selecciona la opcion elegida
+			
+			//esta parte es la encargada de selleccionar cada bloque  de codigo
+			Segun opcionPrincipal Hacer
+				1:
+					CalculadoraBasica()
+				2:
+					CalculadoraAreas()
+				3:
+					EstadisticaBasica()
+				4:
+					Fibonacci()
+				5:
+					Escribir "Gracias por usar la aplicacion! Hasta luego!"
+				De Otro Modo:
+					Escribir "Opcion invalida. Intente de nuevo."
+					Esperar Tecla
+			FinSegun
+		FinMientras
+		
+FinAlgoritmo
